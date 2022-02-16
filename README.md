@@ -13,10 +13,10 @@ Bash version: GNU bash, version 5.1.8(1)-release (x86_64-alpine-linux-musl)
 
 A UTF-8 encoded file containing a lot of Chinese characters, file size ~35K.
 
-``bash
+```bash
 file foo.txt
 foo.txt: UTF-8 Unicode text, with very long lines, with no line terminators
-``
+```
 
 A test script read content from `foo.txt` and assign the content to a variable,
 and then check md5sum for that variable. See [test.sh](test.sh)
@@ -33,9 +33,9 @@ Mac to do the compare work).
 
 build docker image:
 
-``bash
+```bash
 ./build.sh
-``
+```
 
 run docker image:
 
