@@ -6,11 +6,16 @@ do
   i=$((i+1))  
   echo "Docker run round $i"
   docker run \
-    --name long-var-corrupt \
+    --name env-corrupt \
+    --env-file=env.txt \
+    --env RUN_ONCE=true \
     --env SLEEP_ON_FAIL=false \
-    -v $(pwd):/tmp/ \
+    -v $(pwd)/foo.txt.md5:/foo.txt.md5 \
+    -v $(pwd)/foo-mod.txt.md5:/foo-mod.txt.md5 \
+    -v $(pwd)/foo-q.txt.md5:/foo-q.txt.md5 \
+    -v $(pwd)/foo-mod-q.txt.md5:/foo-mod-q.txt.md5 \
     --rm \
-    long-var-corrupt:latest
+    env-corrupt:latest
   
   sleep 1
 
