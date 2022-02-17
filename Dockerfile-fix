@@ -1,0 +1,18 @@
+FROM alpine:3.15.0 as BUILDER
+
+RUN apk add -f gcc musl-dev make \
+    && wget https://mirrors.sjtug.sjtu.edu.cn/gnu/bash/bash-5.1.16.tar.gz \
+    && tar -xvf bash-5.1.16.tar.gz \
+    && cd bash-5.1.16 \
+    && ./configure --without-bash-malloc \
+    && make
+
+FROM alpine:3.15.0
+
+COPY --from=BUILDER /bash-5.1.16/bash /usr/local/bin
+RUN ln -s /usr/local/bin/bash /bin/bash
+
+COPY test.sh /test.sh
+RUN chmod +x /test.sh
+
+ENTRYPOINT [ "/test.sh" ]

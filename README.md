@@ -61,3 +61,17 @@ succeed
 Docker run round 5
 failed
 ```
+
+## Fix
+
+This bug is fixed at patch 14, see [this][1], [this][2] and [this][3].
+
+Dockerfile-fix provide Bash 5.1.16, which solves the problem.
+
+Run `build-fix.sh` to build the fixed docker image. 
+
+Run `loop-run-docker-fix.sh` to verify the fix.
+
+[1]: https://savannah.gnu.org/patch/?10035
+[2]: https://ftp.gnu.org/gnu/bash/bash-5.1-patches/bash51-014
+[3]: https://lists.gnu.org/archive/html/bug-bash/2022-01/msg00009.html
